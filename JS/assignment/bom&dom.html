@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./validation.html">
+</head>
+<body>
+    <section>
+        <div class="container">
+
+            <form action="./validation.html" onclick="checkvalid()">
+            <!-- <div class="row"> -->
+                <div class="login">
+                    <div class="text text-align">
+                        <h1>Login-Form</h1>
+                    </div>
+                    <div class="login-text">
+                        <ul>
+                            <li><input type="text" name=""  id="username" placeholder="Enter Your Username"></li>
+                            <span id="usernameError"></span>
+                        </ul>
+                        <ul>
+                            <li><input type="password" name=""  id="password" placeholder="Enter Your Password"></li>
+                            <span id="passwordError"></span>
+                        </ul>
+                    </div>
+                    <div class="login-btn">
+                        <button>submit</button>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </form>
+        </div>
+    </section>
+
+    <script>
+        let inp = document.getElementById("username")
+        let inp1 = document.getElementById("password")
+        let UserError = document.getElementById("usernameError")
+        let PassError = document.getElementById("passwordError")
+
+        function checkvalid() {
+            
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+
+            if (inp.value =="") {
+                UserError.innerHTML =" please Enter your Username"
+                UserError.style.color = "red"
+                event.preventDefault()
+            }
+            else{
+                UserError.innerHTML =""
+            
+            }
+            if (inp1.value.length < 8) {
+                PassError.innerHTML = "value must be more than 8 letter*"
+                PassError.style.color = "red"
+                event.preventDefault()
+            }
+            else if (inp1.value !== "") {
+                if (inp1.value.search(/[0-9]/) == -1) {
+                    PassError.innerHTML = "include atleast 1 numeric value*"
+                    PassError.style.color = "red"
+                    event.preventDefault()
+                }
+                else if (inp1.value.search(/[A-Z]/)) {
+                    PassError.innerHTML = " include First character is UPPERCASE*"
+                    PassError.style.color = "red"
+                    event.preventDefault()   
+                }
+                else {
+                    PassError.innerHTML = ""
+                }
+            }
+            else{
+                inp1.innerHTML ="";
+                
+                
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
